@@ -3,16 +3,27 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MessageService } from './message.service';
+import { HttpClientModule } from '@angular/common/http';
+import { RequestCache, RequestCacheWithMap } from './request-cache.service';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    MessageService,
+    { provide: RequestCache, useClass: RequestCacheWithMap },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
