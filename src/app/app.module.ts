@@ -8,11 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RequestCache, RequestCacheWithMap } from './request-cache.service';
 import { MessagesComponent } from './messages/messages.component';
 import { httpInterceptorProviders } from './http-intercepts';
+import { UploaderComponent } from './upload/uploader.component';
+import { AuthService } from './auth.service';
+import { HttpErrorHandler } from './http-error-handler.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessagesComponent
+    MessagesComponent,
+    UploaderComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +26,8 @@ import { httpInterceptorProviders } from './http-intercepts';
 
   ],
   providers: [
+    AuthService,
+    HttpErrorHandler,
     MessageService,
     { provide: RequestCache, useClass: RequestCacheWithMap },
     httpInterceptorProviders
