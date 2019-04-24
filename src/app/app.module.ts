@@ -7,6 +7,7 @@ import { MessageService } from './message.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RequestCache, RequestCacheWithMap } from './request-cache.service';
 import { MessagesComponent } from './messages/messages.component';
+import { httpInterceptorProviders } from './http-intercepts';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MessagesComponent } from './messages/messages.component';
   providers: [
     MessageService,
     { provide: RequestCache, useClass: RequestCacheWithMap },
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
